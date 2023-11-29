@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../static/lstyle.css" />
+  </head>
+  <body>
+    <h1>Login</h1>
+    {% if error %}
+    <p style="color: red" align="center">{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="{{ url_for('validate') }}">
+      <input
+        type="text"
+        name="username"
+        placeholder="Enter the Username"
+        onclick="this.value='';"
+      /><br />
+      <br />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        onclick="this.value='';"
+      /><br />
+      <br />
+      <input type="submit" value="Login" />
+    </form>
+  </body>
+</html>

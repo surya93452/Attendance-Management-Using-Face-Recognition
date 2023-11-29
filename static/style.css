@@ -1,0 +1,83 @@
+body {
+  background: linear-gradient(90deg, #020c39, #0ebe9e);
+}
+.topic {
+  color: white;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+th,
+td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid black;
+}
+th {
+  background-color: #122786;
+  color: white;
+}
+tr {
+  background-color: #f2f2f2;
+}
+.button-container {
+  position: relative;
+  top: 7.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.download-btn,
+.delete-btn {
+  width: 150px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.download-btn {
+  padding: 10px 20px;
+  background-color: #122786;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.download-btn:hover {
+  background-color: #1c7b1f;
+  ;
+}
+.delete-btn {
+  padding: 10px 20px;
+  background-color: #122786;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  width: 11em;
+}
+.delete-btn:hover {
+  background-color: #ad0f0feb;
+}
+.download-btn,
+.logout-btn {
+  width: 150px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.logout-btn {
+  padding: 10px 20px;
+  background-color: #122786;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.logout-btn:hover {
+  background-color: #0a0a0d;
+}

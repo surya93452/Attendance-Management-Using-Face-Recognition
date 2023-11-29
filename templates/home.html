@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Attendance Portal</title>
+
+    <link rel="stylesheet" href="../static/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="button-container">
+      <button class="download-btn" onclick="generatePDF()">Download PDF</button>
+      <script>
+        function generatePDF() {
+          const node = document.getElementById("pdf-content");
+          const clonedElement = node.cloneNode(true);
+          clonedElement.querySelector(".topic").style.color = "#000";
+
+          const currentDate = new Date();
+          const formattedDate = currentDate.toLocaleDateString("en-IN");
+          const formattedTime = currentDate.toLocaleTimeString("en-IN", {
+            hour12: false,
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          });
+          const filename = `Attendance_${formattedDate}_${formattedTime}.pdf`;
+
+          const opt = {
+            filename: filename,
+          };
+          html2pdf().from(clonedElement).set(opt).save();
+        }
+      </script>
+
+      <form method="POST" action="{{ url_for('truncate_table') }}">
+        <button class="delete-btn" type="submit">Clear Attendance</button>
+      </form>
+      <form method="GET" action="{{ url_for('logout') }}">
+        <button class="logout-btn" type="submit">Logout</button>
+      </form>
+    </div>
+    <div id="pdf-content">
+      <h1 class="topic">ATTENDANCE DETAILS</h1>
+      <table>
+        <tr>
+          <th>Student ID</th>
+          <th>Roll No</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+        {% for data in datas %}
+        <tr>
+          <td>{{ data.ID }}</td>
+          <td>{{ data.RollNumber }}</td>
+          <td>{{ data.Name }}</td>
+          <td>{{ data.Department }}</td>
+          <td>{{ data.Date }}</td>
+          <td>{{ data.Time }}</td>
+          <td>{{ data.Status }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
